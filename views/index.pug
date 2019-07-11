@@ -2,9 +2,16 @@ extends  base.pug
 
 block content
     h1 #{par1}
-    p  #{par2}
-    div(class='formClass' style='float:left;') 
-      p Kayıt ekle1
-      br
-      a(href='/add-node') kayıt ekle
+    div(style='margin-left: 20px;') 
+       p  #{par2} Hello GitHub, MongoDB
+    div(class='container')
+      div(class='row') 
+          div(class="col-4")        
+            a(href='/add-node') Insert data            
+          div(class="col-4")
+            a(href='/findOne') Find data            
+          div(class="col-4")
+
+      
+
     

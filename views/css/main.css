@@ -1,13 +1,13 @@
 body {
-  background-color: lightblue;
+  background-color: #525252;
+  color :#DDD;
 }
 
 h1 {
-  color: navy;
   margin-left: 20px;
 }
 
 .formClass {
-  background-color: #AAA;
+  background-color: #FF5733;
 
 }
