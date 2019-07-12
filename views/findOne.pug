@@ -1,7 +1,7 @@
 extends  base.pug
 
 block content
-    h1 #{par1}
+    h1 #{par1}  #{par3}
     div(style='margin-left: 20px;') 
       a(href='/') #{par2}
     div(class='container')
@@ -21,8 +21,13 @@ block content
               br   
               br  
               input(type="submit" value="Submit")
-          div(class="col-4")      
-              p pug pages - bootstrap                    
+          div(class="col-4")                
+            - var friends = par3                
+            case friends
+              when 0
+                p no one              
+              default
+                p  #{par3.first_name}  #{par3.last_name}
           div(class="col-4")      
               p(class="text-muted") This text is muted.
               p(class="text-primary") This text is important.

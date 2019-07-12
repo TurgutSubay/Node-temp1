@@ -40,26 +40,21 @@ app.get('/submit-get-kitten', function (req, res) {
 app.get('/findOne', function (req, res) {
     return res.render('findOne', {
       par1:"Find Data",
-      par2:"Main page"
+      par2:"Main page",
+      par3: 0,
+      par4: 0
     });
 })
 
 app.get('/submit-get-findOne', function (req, res) {
       finedOne.finedOne_cat(req.query.first_name,  req.query.last_name,function(callback){
-         if (callback ==='noResult' || callback === 'null'  || callback === 'undefined'){
-             res.send('No Result <a href="/">Main page</a>');
-         }else{
-          res.send(req.query.first_name + ' -> '+ callback.last_name + '<br/><a href="/">Main page</a>');
+           return res.render('findOne', {
+             par1:"Find Data",
+             par2:"Main page",
+             par3: callback
+           });
         }
-       }
       );
-
-  /*  return res.render('submit-get-fineone', {
-      par1:"Submit FindOne",
-      par2:"Mongodb",
-      par3:req.query.firt_name,
-      par4:req.query.last_name
-    });*/
 })
 
 //Start Server
