@@ -61,6 +61,21 @@ app.get('/submit-get-findOne', function (req, res) {
       );
 })
 
+app.post('/api/submit_post_addMynots', (req,res) => {
+
+  const { error } = validateMynots(req.body);
+  if(error) return res.status(400).send(error.details[0].message);
+  save_obj.save_mynots(req.body.first_name, req.body.last_name);
+  return res.render('submit-get-kitten', {
+    par1:"Post Insert",
+    par2:"Mongodb",
+    par3: req.body.first_name,
+    par4: req.body.last_name
+  });
+   
+ });
+ 
+
 const myarray =[
   {id:1, name:'Car1'},
   {id:2, name:'Car2'},
@@ -110,7 +125,14 @@ function validateMyarray(myarr){
   return Joi.validate(myarr, schema); 
 
 }
+function validateMynots(myarr){
+  const schema = {
+    first_name: Joi.string().min(3).required(),
+    last_name: Joi.string().min(3).required()
+  };
+  return Joi.validate(myarr, schema); 
 
+}
 //Start Server at Heroku
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}..`));
